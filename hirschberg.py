@@ -85,9 +85,58 @@ def fill_in_backtrace(seq_1, seq_2):
 	filled_in.append(result[-1])
 	return filled_in
 
-print("filled in", fill_in_backtrace("ATGTTAT", "ATCGTAC"))
+def print_alignment(seq_1, seq_2, alignment_path):
+	align_1 = []
+	align_2 = []
+	i, j = 0, 0
+
+	for coord in alignment_path[1:]:  # start from second coord
+		while i < coord[0] and j < coord[1]:
+			align_1.append(seq_1[i])
+			align_2.append(seq_2[j])
+			i += 1
+			j += 1
+		while i < coord[0]:
+			align_1.append(seq_1[i])
+			align_2.append('-')
+			i += 1
+		while j < coord[1]:
+			align_1.append('-')
+			align_2.append(seq_2[j])
+			j += 1
+
+	# add any left over characters
+	align_1.extend(seq_1[i:])
+	align_2.extend(seq_2[j:])
+
+	# pad the shorter sequence with gaps if necessary
+	max_len = max(len(align_1), len(align_2))
+	align_1 += ['-'] * (max_len - len(align_1))
+	align_2 += ['-'] * (max_len - len(align_2))
+
+	# create the match line
+	match_line = ['|' if a == b and a != '-' else ' ' for a, b in zip(align_1, align_2)]
+
+	# print the alignment
+	print('Sequence 1:', ''.join(align_1))
+	print('           ', ''.join(match_line))
+	print('Sequence 2:', ''.join(align_2))
+
+	# Calculate and print alignment statistics
+	matches = sum(1 for a, b in zip(align_1, align_2) if a == b and a != '-')
+	mismatches = sum(1 for a, b in zip(align_1, align_2) if a != b and a != '-' and b != '-')
+	gaps = align_1.count('-') + align_2.count('-')
+	print(f'Score: {matches - gaps - mismatches}')
+
+
+
+# print("filled in", fill_in_backtrace("ATGTTAT", "ATCGTAC"))
 			
-print("filled in", fill_in_backtrace("ATCGTACTTTTTT", "ATGTTAT"))
+# print("filled in", fill_in_backtrace("ATCGTACTTTTTT", "ATGTTAT"))
+# print("filled in", fill_in_backtrace("ATGTTAT", "ATCGTACTTTTTT"))
+print_alignment("ATGTAGTACAAAAAA", "ATCGTAC", fill_in_backtrace("ATGTAGTACAAAAAA", "ATCGTAC"))
+
+
 
 					
 		
