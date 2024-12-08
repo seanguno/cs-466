@@ -62,4 +62,34 @@ def hirschberg(seq_1, seq_2):
 	print(result_sorted)
 	return result_sorted
 
-print("Final result:", hirschberg('ATGTTAT', 'ATCGTAC'))
+def fill_in_backtrace(seq_1, seq_2):
+	result = hirschberg(seq_1, seq_2)
+	filled_in = []
+	for cell_idx in range(len(result) - 1):
+		filled_in.append(result[cell_idx])
+		match_found = False
+		if result[cell_idx + 1][0] - result[cell_idx][0] > 1:
+			print(f'second {result[cell_idx + 1][0]} - first {result[cell_idx][0]} is {result[cell_idx + 1][0] - result[cell_idx][0]}')
+			# need to account for gap
+			for i in range(result[cell_idx][0], result[cell_idx + 1][0] - 1):
+				if seq_1[i] == seq_2[result[cell_idx][1]]:
+					print(f'i: {i}')
+					print(f'result[cell_idx][1]: {result[cell_idx][1]}')
+					print(f'curr cell: {result[cell_idx]}')
+					filled_in.append((i + 1, result[cell_idx][1] + 1))
+					match_found = True
+				else:
+					print(f'match found is: {match_found}')
+					print(f'appending: {(i + 1, result[cell_idx][1] + 1 if match_found else result[cell_idx][1])}')
+					filled_in.append((i + 1, result[cell_idx][1] + 1 if match_found else result[cell_idx][1]))
+	filled_in.append(result[-1])
+	return filled_in
+
+print("filled in", fill_in_backtrace("ATGTTAT", "ATCGTAC"))
+			
+print("filled in", fill_in_backtrace("ATCGTACTTTTTT", "ATGTTAT"))
+
+					
+		
+
+#print("Final result:", hirschberg('ATGTTAT', 'ATCGTAC'))
