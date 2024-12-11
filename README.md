@@ -5,9 +5,9 @@ Our project compares the Needleman-Wunsch and Hirshberg algorithms to determine 
 
 # Installation
 ## Prerequisites
-- **Python** - `Needleman-Wunsch and Hirshberg Comparison` requires Python 3.9.12 or newer. 
+- **Python** - Our program requires Python 3.9.12 or newer. 
 ## Install using PIP
-Our program can be installed using pip, the package manager for Python. Open a terminal or command prompt and run the following command:
+Our program can be installed using `pip`, the package manager for Python. Open a terminal or command prompt and run the following command:
 
 ```bash
 $ pip install matplotlib memory_profiler
