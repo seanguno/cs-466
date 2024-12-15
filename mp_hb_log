@@ -1,0 +1,13 @@
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    47  81.4140625000 MiB  81.4140625000 MiB           1   @profile(precision=10, stream=open('mp_hb_log', 'w+'))
+    48                                         def hirschberg(seq_1, seq_2):
+    49  81.4140625000 MiB   0.0000000000 MiB           1   	result = []
+    50  81.4960937500 MiB   0.0820312500 MiB           1   	hirschberg_helper(seq_1, seq_2, 0, 0, len(seq_1), len(seq_2), result)
+    51  81.4960937500 MiB   0.0000000000 MiB           1   	result_no_dupes = set(result)
+    52  81.4960937500 MiB   0.0000000000 MiB          41   	result_sorted = sorted(list(result_no_dupes), key = lambda x: (x[0], x[1]))
+    53  81.4960937500 MiB   0.0000000000 MiB           1   	return result_sorted
+
+

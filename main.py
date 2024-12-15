@@ -23,7 +23,7 @@ for i in range(1, num_seqs+1):
 # dictionary where key is tuple of sequences aligned (v, w)
 # and value is tuple of scores (needleman score, hirschberg score)
 scores = {}
-alignment_keys = [(3, 4)]   # alignments to perform
+alignment_keys = [(15, 16)]   # alignments to perform
 #(1, 2), (3, 4), (5, 6), (7, 8), (9, 10), (11, 12), (13, 14), (15, 16)
 for i, j in alignment_keys:
     v = seqs[i]

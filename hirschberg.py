@@ -1,4 +1,5 @@
 from memory_profiler import profile
+
 def needleman_score_linear(seq_1, seq_2):
 	# init dp table
 	score = [[0] * 2 for i in range(len(seq_1) + 1)]
@@ -22,7 +23,7 @@ def needleman_score_linear(seq_1, seq_2):
 	# get last row of score
 	last_col = [row[1] for row in score]
 	return last_col
-
+# @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
 def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
 	if j_p - j == 1:
 		result.append((i, j))
@@ -43,14 +44,14 @@ def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
 	result.append((max_idx + i, mid_j))
 	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
 	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
-
+# @profile(precision=10, stream=open('mp_hb_log', 'w+'))
 def hirschberg(seq_1, seq_2):
 	result = []
 	hirschberg_helper(seq_1, seq_2, 0, 0, len(seq_1), len(seq_2), result)
 	result_no_dupes = set(result)
 	result_sorted = sorted(list(result_no_dupes), key = lambda x: (x[0], x[1]))
 	return result_sorted
-@profile(precision=10, stream=open('mp_hb_log', 'w+'))
+@profile(precision=10, stream=open('mp_fb_log', 'w+'))
 def fill_in_backtrace(seq_1, seq_2):
 	result = hirschberg(seq_1, seq_2)
 	filled_in = []

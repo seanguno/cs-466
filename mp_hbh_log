@@ -1,0 +1,999 @@
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4453125000 MiB  81.4453125000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4453125000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4453125000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4453125000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4453125000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4531250000 MiB  81.4531250000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4531250000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4531250000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4531250000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4531250000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4531250000 MiB  81.4414062500 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4531250000 MiB   0.0039062500 MiB           3   	if j_p - j == 1:
+    29  81.4531250000 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4531250000 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4531250000 MiB   0.0000000000 MiB           2   		return
+    32  81.4375000000 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4375000000 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4375000000 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4414062500 MiB   0.0039062500 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4414062500 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4414062500 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4414062500 MiB   0.0000000000 MiB           7   	for idx in range(len(prefix)):
+    40  81.4414062500 MiB   0.0000000000 MiB           6   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4414062500 MiB   0.0000000000 MiB           6   		if wt > max_wt:
+    42  81.4414062500 MiB   0.0000000000 MiB           3   			max_idx = idx
+    43  81.4414062500 MiB   0.0000000000 MiB           3   			max_wt = wt
+    44  81.4414062500 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4492187500 MiB   0.0039062500 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4531250000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4570312500 MiB  81.4570312500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4570312500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4570312500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4570312500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4570312500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4648437500 MiB  81.4648437500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4648437500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4648437500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4648437500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4648437500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4648437500 MiB  81.4609375000 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4648437500 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4648437500 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4648437500 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4648437500 MiB   0.0000000000 MiB           2   		return
+    32  81.4570312500 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4570312500 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4570312500 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4570312500 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4570312500 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4570312500 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4570312500 MiB   0.0000000000 MiB           4   	for idx in range(len(prefix)):
+    40  81.4570312500 MiB   0.0000000000 MiB           3   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4570312500 MiB   0.0000000000 MiB           3   		if wt > max_wt:
+    42  81.4570312500 MiB   0.0000000000 MiB           2   			max_idx = idx
+    43  81.4570312500 MiB   0.0000000000 MiB           2   			max_wt = wt
+    44  81.4570312500 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4609375000 MiB   0.0039062500 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4765625000 MiB   0.0117187500 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4648437500 MiB  81.4453125000 MiB           7   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4648437500 MiB   0.0000000000 MiB           7   	if j_p - j == 1:
+    29  81.4648437500 MiB   0.0000000000 MiB           4   		result.append((i, j))
+    30  81.4648437500 MiB   0.0000000000 MiB           4   		result.append((i_p, j_p))
+    31  81.4648437500 MiB   0.0000000000 MiB           4   		return
+    32  81.4570312500 MiB   0.0000000000 MiB           3   	if j_p < 1:
+    33                                         		return
+    34  81.4570312500 MiB   0.0000000000 MiB           3   	mid_j = int((j + j_p) / 2)
+    35  81.4570312500 MiB   0.0039062500 MiB           3   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4570312500 MiB   0.0039062500 MiB           3   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4570312500 MiB   0.0000000000 MiB           3   	max_idx = 0
+    38  81.4570312500 MiB   0.0000000000 MiB           3   	max_wt = float('-inf')
+    39  81.4570312500 MiB   0.0000000000 MiB          20   	for idx in range(len(prefix)):
+    40  81.4570312500 MiB   0.0000000000 MiB          17   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4570312500 MiB   0.0000000000 MiB          17   		if wt > max_wt:
+    42  81.4570312500 MiB   0.0000000000 MiB          10   			max_idx = idx
+    43  81.4570312500 MiB   0.0000000000 MiB          10   			max_wt = wt
+    44  81.4570312500 MiB   0.0000000000 MiB           3   	result.append((max_idx + i, mid_j))
+    45  81.4609375000 MiB   0.0117187500 MiB           3   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4765625000 MiB   0.0117187500 MiB           3   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4804687500 MiB  81.4804687500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4804687500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4804687500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4804687500 MiB  81.4804687500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4804687500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4804687500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4804687500 MiB  81.4804687500 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4804687500 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4804687500 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4804687500 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4804687500 MiB   0.0000000000 MiB           2   		return
+    32  81.4765625000 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4765625000 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4765625000 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4765625000 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4765625000 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4765625000 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4765625000 MiB   0.0000000000 MiB           4   	for idx in range(len(prefix)):
+    40  81.4765625000 MiB   0.0000000000 MiB           3   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4765625000 MiB   0.0000000000 MiB           3   		if wt > max_wt:
+    42  81.4765625000 MiB   0.0000000000 MiB           2   			max_idx = idx
+    43  81.4765625000 MiB   0.0000000000 MiB           2   			max_wt = wt
+    44  81.4765625000 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4804687500 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4804687500 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4804687500 MiB  81.4804687500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4804687500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4804687500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4804687500 MiB  81.4804687500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4804687500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4804687500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4804687500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4804687500 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           2   		return
+    32  81.4804687500 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4804687500 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4804687500 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4804687500 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4804687500 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4804687500 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4804687500 MiB   0.0000000000 MiB           4   	for idx in range(len(prefix)):
+    40  81.4804687500 MiB   0.0000000000 MiB           3   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4804687500 MiB   0.0000000000 MiB           3   		if wt > max_wt:
+    42  81.4804687500 MiB   0.0000000000 MiB           2   			max_idx = idx
+    43  81.4804687500 MiB   0.0000000000 MiB           2   			max_wt = wt
+    44  81.4804687500 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0039062500 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4804687500 MiB           5   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           5   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           3   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           3   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           3   		return
+    32  81.4804687500 MiB   0.0000000000 MiB           2   	if j_p < 1:
+    33                                         		return
+    34  81.4804687500 MiB   0.0000000000 MiB           2   	mid_j = int((j + j_p) / 2)
+    35  81.4804687500 MiB   0.0000000000 MiB           2   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4804687500 MiB   0.0000000000 MiB           2   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4804687500 MiB   0.0000000000 MiB           2   	max_idx = 0
+    38  81.4804687500 MiB   0.0000000000 MiB           2   	max_wt = float('-inf')
+    39  81.4804687500 MiB   0.0000000000 MiB           9   	for idx in range(len(prefix)):
+    40  81.4804687500 MiB   0.0000000000 MiB           7   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4804687500 MiB   0.0000000000 MiB           7   		if wt > max_wt:
+    42  81.4804687500 MiB   0.0000000000 MiB           4   			max_idx = idx
+    43  81.4804687500 MiB   0.0000000000 MiB           4   			max_wt = wt
+    44  81.4804687500 MiB   0.0000000000 MiB           2   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0039062500 MiB           2   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           2   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4804687500 MiB           9   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           9   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           5   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           5   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           5   		return
+    32  81.4804687500 MiB   0.0000000000 MiB           4   	if j_p < 1:
+    33                                         		return
+    34  81.4804687500 MiB   0.0000000000 MiB           4   	mid_j = int((j + j_p) / 2)
+    35  81.4804687500 MiB   0.0000000000 MiB           4   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4804687500 MiB   0.0000000000 MiB           4   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4804687500 MiB   0.0000000000 MiB           4   	max_idx = 0
+    38  81.4804687500 MiB   0.0000000000 MiB           4   	max_wt = float('-inf')
+    39  81.4804687500 MiB   0.0000000000 MiB          20   	for idx in range(len(prefix)):
+    40  81.4804687500 MiB   0.0000000000 MiB          16   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4804687500 MiB   0.0000000000 MiB          16   		if wt > max_wt:
+    42  81.4804687500 MiB   0.0000000000 MiB           9   			max_idx = idx
+    43  81.4804687500 MiB   0.0000000000 MiB           9   			max_wt = wt
+    44  81.4804687500 MiB   0.0000000000 MiB           4   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0039062500 MiB           4   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           4   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4453125000 MiB          17   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB          17   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           9   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           9   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           9   		return
+    32  81.4804687500 MiB   0.0000000000 MiB           8   	if j_p < 1:
+    33                                         		return
+    34  81.4804687500 MiB   0.0000000000 MiB           8   	mid_j = int((j + j_p) / 2)
+    35  81.4804687500 MiB   0.0039062500 MiB           8   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4804687500 MiB   0.0039062500 MiB           8   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4804687500 MiB   0.0039062500 MiB           8   	max_idx = 0
+    38  81.4804687500 MiB   0.0000000000 MiB           8   	max_wt = float('-inf')
+    39  81.4804687500 MiB   0.0000000000 MiB          54   	for idx in range(len(prefix)):
+    40  81.4804687500 MiB   0.0000000000 MiB          46   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4804687500 MiB   0.0000000000 MiB          46   		if wt > max_wt:
+    42  81.4804687500 MiB   0.0000000000 MiB          27   			max_idx = idx
+    43  81.4804687500 MiB   0.0000000000 MiB          27   			max_wt = wt
+    44  81.4804687500 MiB   0.0000000000 MiB           8   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0156250000 MiB           8   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0117187500 MiB           8   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           2   		return
+    32  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4843750000 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4843750000 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4843750000 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4843750000 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4843750000 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4843750000 MiB   0.0000000000 MiB           4   	for idx in range(len(prefix)):
+    40  81.4843750000 MiB   0.0000000000 MiB           3   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4843750000 MiB   0.0000000000 MiB           3   		if wt > max_wt:
+    42  81.4843750000 MiB   0.0000000000 MiB           2   			max_idx = idx
+    43  81.4843750000 MiB   0.0000000000 MiB           2   			max_wt = wt
+    44  81.4843750000 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           2   		return
+    32  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4843750000 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4843750000 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4843750000 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4843750000 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4843750000 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4843750000 MiB   0.0000000000 MiB           4   	for idx in range(len(prefix)):
+    40  81.4843750000 MiB   0.0000000000 MiB           3   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4843750000 MiB   0.0000000000 MiB           3   		if wt > max_wt:
+    42  81.4843750000 MiB   0.0000000000 MiB           2   			max_idx = idx
+    43  81.4843750000 MiB   0.0000000000 MiB           2   			max_wt = wt
+    44  81.4843750000 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           5   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           5   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           3   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           3   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           3   		return
+    32  81.4843750000 MiB   0.0000000000 MiB           2   	if j_p < 1:
+    33                                         		return
+    34  81.4843750000 MiB   0.0000000000 MiB           2   	mid_j = int((j + j_p) / 2)
+    35  81.4843750000 MiB   0.0000000000 MiB           2   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4843750000 MiB   0.0000000000 MiB           2   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4843750000 MiB   0.0000000000 MiB           2   	max_idx = 0
+    38  81.4843750000 MiB   0.0000000000 MiB           2   	max_wt = float('-inf')
+    39  81.4843750000 MiB   0.0000000000 MiB           9   	for idx in range(len(prefix)):
+    40  81.4843750000 MiB   0.0000000000 MiB           7   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4843750000 MiB   0.0000000000 MiB           7   		if wt > max_wt:
+    42  81.4843750000 MiB   0.0000000000 MiB           4   			max_idx = idx
+    43  81.4843750000 MiB   0.0000000000 MiB           4   			max_wt = wt
+    44  81.4843750000 MiB   0.0000000000 MiB           2   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0000000000 MiB           2   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           2   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4843750000 MiB  81.4843750000 MiB           9   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4843750000 MiB   0.0000000000 MiB           9   	if j_p - j == 1:
+    29  81.4843750000 MiB   0.0000000000 MiB           5   		result.append((i, j))
+    30  81.4843750000 MiB   0.0000000000 MiB           5   		result.append((i_p, j_p))
+    31  81.4843750000 MiB   0.0000000000 MiB           5   		return
+    32  81.4843750000 MiB   0.0000000000 MiB           4   	if j_p < 1:
+    33                                         		return
+    34  81.4843750000 MiB   0.0000000000 MiB           4   	mid_j = int((j + j_p) / 2)
+    35  81.4843750000 MiB   0.0000000000 MiB           4   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4843750000 MiB   0.0000000000 MiB           4   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4843750000 MiB   0.0000000000 MiB           4   	max_idx = 0
+    38  81.4843750000 MiB   0.0000000000 MiB           4   	max_wt = float('-inf')
+    39  81.4843750000 MiB   0.0000000000 MiB          20   	for idx in range(len(prefix)):
+    40  81.4843750000 MiB   0.0000000000 MiB          16   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4843750000 MiB   0.0000000000 MiB          16   		if wt > max_wt:
+    42  81.4843750000 MiB   0.0000000000 MiB           9   			max_idx = idx
+    43  81.4843750000 MiB   0.0000000000 MiB           9   			max_wt = wt
+    44  81.4843750000 MiB   0.0000000000 MiB           4   	result.append((max_idx + i, mid_j))
+    45  81.4843750000 MiB   0.0000000000 MiB           4   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4843750000 MiB   0.0000000000 MiB           4   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4882812500 MiB  81.4882812500 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4882812500 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4882812500 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4882812500 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4882812500 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           2   		return
+    32  81.4843750000 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4843750000 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4843750000 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4843750000 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4843750000 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4843750000 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4843750000 MiB   0.0000000000 MiB           3   	for idx in range(len(prefix)):
+    40  81.4843750000 MiB   0.0000000000 MiB           2   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4843750000 MiB   0.0000000000 MiB           2   		if wt > max_wt:
+    42  81.4843750000 MiB   0.0000000000 MiB           2   			max_idx = idx
+    43  81.4843750000 MiB   0.0000000000 MiB           2   			max_wt = wt
+    44  81.4843750000 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4882812500 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4921875000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           1   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           1   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           1   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           1   		return
+    32                                         	if j_p < 1:
+    33                                         		return
+    34                                         	mid_j = int((j + j_p) / 2)
+    35                                         	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36                                         	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37                                         	max_idx = 0
+    38                                         	max_wt = float('-inf')
+    39                                         	for idx in range(len(prefix)):
+    40                                         		wt = prefix[idx] + suffix[-idx - 1]
+    41                                         		if wt > max_wt:
+    42                                         			max_idx = idx
+    43                                         			max_wt = wt
+    44                                         	result.append((max_idx + i, mid_j))
+    45                                         	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46                                         	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           3   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           3   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           2   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           2   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           2   		return
+    32  81.4921875000 MiB   0.0000000000 MiB           1   	if j_p < 1:
+    33                                         		return
+    34  81.4921875000 MiB   0.0000000000 MiB           1   	mid_j = int((j + j_p) / 2)
+    35  81.4921875000 MiB   0.0000000000 MiB           1   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4921875000 MiB   0.0000000000 MiB           1   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4921875000 MiB   0.0000000000 MiB           1   	max_idx = 0
+    38  81.4921875000 MiB   0.0000000000 MiB           1   	max_wt = float('-inf')
+    39  81.4921875000 MiB   0.0000000000 MiB           2   	for idx in range(len(prefix)):
+    40  81.4921875000 MiB   0.0000000000 MiB           1   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4921875000 MiB   0.0000000000 MiB           1   		if wt > max_wt:
+    42  81.4921875000 MiB   0.0000000000 MiB           1   			max_idx = idx
+    43  81.4921875000 MiB   0.0000000000 MiB           1   			max_wt = wt
+    44  81.4921875000 MiB   0.0000000000 MiB           1   	result.append((max_idx + i, mid_j))
+    45  81.4921875000 MiB   0.0000000000 MiB           1   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4960937500 MiB   0.0039062500 MiB           1   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           5   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           5   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           3   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           3   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           3   		return
+    32  81.4921875000 MiB   0.0000000000 MiB           2   	if j_p < 1:
+    33                                         		return
+    34  81.4921875000 MiB   0.0000000000 MiB           2   	mid_j = int((j + j_p) / 2)
+    35  81.4921875000 MiB   0.0000000000 MiB           2   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4921875000 MiB   0.0000000000 MiB           2   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4921875000 MiB   0.0000000000 MiB           2   	max_idx = 0
+    38  81.4921875000 MiB   0.0000000000 MiB           2   	max_wt = float('-inf')
+    39  81.4921875000 MiB   0.0000000000 MiB           5   	for idx in range(len(prefix)):
+    40  81.4921875000 MiB   0.0000000000 MiB           3   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4921875000 MiB   0.0000000000 MiB           3   		if wt > max_wt:
+    42  81.4921875000 MiB   0.0000000000 MiB           3   			max_idx = idx
+    43  81.4921875000 MiB   0.0000000000 MiB           3   			max_wt = wt
+    44  81.4921875000 MiB   0.0000000000 MiB           2   	result.append((max_idx + i, mid_j))
+    45  81.4921875000 MiB   0.0000000000 MiB           2   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4960937500 MiB   0.0039062500 MiB           2   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB           9   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB           9   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB           5   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB           5   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB           5   		return
+    32  81.4921875000 MiB   0.0000000000 MiB           4   	if j_p < 1:
+    33                                         		return
+    34  81.4921875000 MiB   0.0000000000 MiB           4   	mid_j = int((j + j_p) / 2)
+    35  81.4921875000 MiB   0.0000000000 MiB           4   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4921875000 MiB   0.0000000000 MiB           4   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4921875000 MiB   0.0000000000 MiB           4   	max_idx = 0
+    38  81.4921875000 MiB   0.0000000000 MiB           4   	max_wt = float('-inf')
+    39  81.4921875000 MiB   0.0000000000 MiB          12   	for idx in range(len(prefix)):
+    40  81.4921875000 MiB   0.0000000000 MiB           8   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4921875000 MiB   0.0000000000 MiB           8   		if wt > max_wt:
+    42  81.4921875000 MiB   0.0000000000 MiB           7   			max_idx = idx
+    43  81.4921875000 MiB   0.0000000000 MiB           7   			max_wt = wt
+    44  81.4921875000 MiB   0.0000000000 MiB           4   	result.append((max_idx + i, mid_j))
+    45  81.4921875000 MiB   0.0000000000 MiB           4   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4960937500 MiB   0.0039062500 MiB           4   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4921875000 MiB          19   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB          19   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB          10   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB          10   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB          10   		return
+    32  81.4921875000 MiB   0.0000000000 MiB           9   	if j_p < 1:
+    33                                         		return
+    34  81.4921875000 MiB   0.0000000000 MiB           9   	mid_j = int((j + j_p) / 2)
+    35  81.4921875000 MiB   0.0000000000 MiB           9   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4921875000 MiB   0.0000000000 MiB           9   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4921875000 MiB   0.0000000000 MiB           9   	max_idx = 0
+    38  81.4921875000 MiB   0.0000000000 MiB           9   	max_wt = float('-inf')
+    39  81.4921875000 MiB   0.0000000000 MiB          41   	for idx in range(len(prefix)):
+    40  81.4921875000 MiB   0.0000000000 MiB          32   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4921875000 MiB   0.0000000000 MiB          32   		if wt > max_wt:
+    42  81.4921875000 MiB   0.0000000000 MiB          22   			max_idx = idx
+    43  81.4921875000 MiB   0.0000000000 MiB          22   			max_wt = wt
+    44  81.4921875000 MiB   0.0000000000 MiB           9   	result.append((max_idx + i, mid_j))
+    45  81.4921875000 MiB   0.0000000000 MiB           9   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4960937500 MiB   0.0039062500 MiB           9   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
+Filename: /Users/seanguno/Documents/junior year/first sem/bioe 466/cs-466/hirschberg.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    26  81.4921875000 MiB  81.4531250000 MiB          37   @profile(precision=10, stream=open('mp_hbh_log', 'w+'))
+    27                                         def hirschberg_helper(seq_1, seq_2, i, j, i_p, j_p, result):
+    28  81.4921875000 MiB   0.0000000000 MiB          37   	if j_p - j == 1:
+    29  81.4921875000 MiB   0.0000000000 MiB          19   		result.append((i, j))
+    30  81.4921875000 MiB   0.0000000000 MiB          19   		result.append((i_p, j_p))
+    31  81.4921875000 MiB   0.0000000000 MiB          19   		return
+    32  81.4921875000 MiB   0.0000000000 MiB          18   	if j_p < 1:
+    33                                         		return
+    34  81.4921875000 MiB   0.0000000000 MiB          18   	mid_j = int((j + j_p) / 2)
+    35  81.4921875000 MiB   0.0039062500 MiB          18   	prefix = needleman_score_linear(seq_1[i:i_p], seq_2[j:mid_j])
+    36  81.4921875000 MiB   0.0039062500 MiB          18   	suffix = needleman_score_linear(seq_1[i:i_p][::-1], seq_2[mid_j:j_p][::-1])
+    37  81.4921875000 MiB   0.0039062500 MiB          18   	max_idx = 0
+    38  81.4921875000 MiB   0.0000000000 MiB          18   	max_wt = float('-inf')
+    39  81.4921875000 MiB   0.0000000000 MiB         116   	for idx in range(len(prefix)):
+    40  81.4921875000 MiB   0.0000000000 MiB          98   		wt = prefix[idx] + suffix[-idx - 1]
+    41  81.4921875000 MiB   0.0000000000 MiB          98   		if wt > max_wt:
+    42  81.4921875000 MiB   0.0000000000 MiB          61   			max_idx = idx
+    43  81.4921875000 MiB   0.0000000000 MiB          61   			max_wt = wt
+    44  81.4921875000 MiB   0.0000000000 MiB          18   	result.append((max_idx + i, mid_j))
+    45  81.4921875000 MiB   0.0156250000 MiB          18   	hirschberg_helper(seq_1, seq_2, i, j, max_idx + i, mid_j, result)
+    46  81.4960937500 MiB   0.0156250000 MiB          18   	hirschberg_helper(seq_1, seq_2, max_idx + i, mid_j, i_p, j_p, result)
+
+
