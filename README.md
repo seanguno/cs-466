@@ -12,7 +12,6 @@ Our program requires some python libraries, which can be installed using `pip`, 
 ```bash
 $ pip install matplotlib memory_profiler
 ```
-<br>
 
 # Run Code
 To run the code, open a terminal or command prompt and run the following command:
@@ -21,3 +20,4 @@ $ python main.py
 ```
 
 # Usage Instructions
+Sequences to align should be formatted as FASTA files and named using integers. For example, 1.fasta and 2.fasta. In main.py, the `num_seqs` variable should be set to the number of sequences (number of FASTA files) that will be analyzed. `alignment_keys` should be filled in with the alingments to compute, for example, `alignment_keys = [(1, 2)]` indicates 1.fasta and 2.fasta will be aligned. Note that the code will take a very long time to run if long sequences are aligned, expecially if `@profile` is not commented out beacuse memory_profiler increases the overall runtime.
