@@ -78,7 +78,7 @@ x_fit_mem_NW_only = np.linspace(min(x_mem),max(x_mem), 100)
 # needleman only
 plt.figure(2)
 plt.scatter(x_mem, y_mem, color='blue', label='Needleman-Wunsch')
-plt.plot(x_fit_mem, poly_nw_mem(x_fit_mem), color='blue', linestyle='--', label = 'Quadratic Fit for Needleman-Wunsch')
+plt.plot(x_fit_mem_NW_only, poly_nw_mem(x_fit_mem_NW_only), color='blue', linestyle='--', label = 'Quadratic Fit for Needleman-Wunsch')
 plt.xlabel('Average Sequence Length')
 plt.ylabel('Average Alignment Memory (MiB)')
 plt.legend()
@@ -90,8 +90,6 @@ plt.plot(x_fit_mem, poly_hb_mem(x_fit_mem), color='red', linestyle='--', label =
 plt.xlabel('Average Sequence Length')
 plt.ylabel('Average Alignment Memory (MiB)')
 plt.legend()
-
-plt.show()
 
 # calculating R^2 values
 y_pred_mem = poly_nw_mem(x_mem)
@@ -105,3 +103,5 @@ r_mem = 1 - (SS_res_mem / SS_total_mem)
 r2_mem = 1 - (SS2_res_mem / SS2_total_mem)
 print("R^2 NW memory = ", r_mem)
 print("R^2 HB memory = ", r2_mem)
+
+plt.show()
