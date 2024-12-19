@@ -15,11 +15,11 @@ x2, y2 = zip(*hb_time_extended)
 # fit quadratic polynomial to both
 coeffs_nw = np.polyfit(x, y, 2)
 poly_nw = np.poly1d(coeffs_nw)
-print(coeffs_nw)
+print(f'NW runtime quadratic fit coefficients: {coeffs_nw}')
 
 coeffs_hb = np.polyfit(x2, y2, 2)
 poly_hb = np.poly1d(coeffs_hb)
-print(coeffs_hb)
+print(f'Hirschberg runtime quadratic fit coefficients: {coeffs_hb}')
 
 # x-vals for polynomial plotting
 x_fit = np.linspace(min(min(x), min(x2)), max(max(x), max(x2)), 100)
@@ -46,8 +46,8 @@ SS2_total = np.sum((y2 - np.mean(y2)) ** 2)
 
 r = 1 - (SS_res / SS_total)
 r2 = 1 - (SS2_res / SS2_total)
-print("R^2 NW = ", r)
-print("R^2 HB = ", r2)
+print("R^2 NW time complexity = ", r)
+print("R^2 HB time compexity  = ", r2)
 
 # plot memory analysis
 # x-axis = average length of the two aligned sequences
@@ -61,24 +61,32 @@ x2_mem, y2_mem = zip(*hb_mem)
 coeffs_nw_mem = np.polyfit(x_mem, y_mem, 2)
 poly_nw_mem = np.poly1d(coeffs_nw_mem)
 print(coeffs_nw_mem)
+print(f'NW memory quadratic fit coefficients: {coeffs_nw_mem}')
 
 # fit linear regression to hirschberg
 coeffs_hb_mem = np.polyfit(x2_mem, y2_mem, 1)
 poly_hb_mem = np.poly1d(coeffs_hb_mem)
 print(coeffs_hb_mem)
+print(f'Hirschberg memory linear fit coefficients: {coeffs_hb_mem}')
 
 # x-vals for polynomial plotting
 x_fit_mem = np.linspace(min(min(x_mem), min(x2_mem)), max(max(x_mem), max(x2_mem)), 100)
-#x_fit_mem = np.linspace(min(x_mem),max(x_mem), 100)
+x_fit_mem_NW_only = np.linspace(min(x_mem),max(x_mem), 100)
 
 # plotting
+
+# needleman only
 plt.figure(2)
-#plt.scatter(x_mem, y_mem, color='blue', label='Needleman-Wunsch')
+plt.scatter(x_mem, y_mem, color='blue', label='Needleman-Wunsch')
+plt.plot(x_fit_mem, poly_nw_mem(x_fit_mem), color='blue', linestyle='--', label = 'Quadratic Fit for Needleman-Wunsch')
+plt.xlabel('Average Sequence Length')
+plt.ylabel('Average Alignment Memory (MiB)')
+plt.legend()
+
+# hirschberg only
+plt.figure(3)
 plt.scatter(x2_mem, y2_mem, color='red', label='Hirschberg')
-
-#plt.plot(x_fit_mem, poly_nw_mem(x_fit_mem), color='blue', linestyle='--', label = 'Quadratic Fit for Needleman-Wunsch')
 plt.plot(x_fit_mem, poly_hb_mem(x_fit_mem), color='red', linestyle='--', label = 'Linear Fit for Hirschberg')
-
 plt.xlabel('Average Sequence Length')
 plt.ylabel('Average Alignment Memory (MiB)')
 plt.legend()
@@ -95,5 +103,5 @@ SS2_total_mem = np.sum((y2_mem - np.mean(y2_mem)) ** 2)
 
 r_mem = 1 - (SS_res_mem / SS_total_mem)
 r2_mem = 1 - (SS2_res_mem / SS2_total_mem)
-print("R^2 NW = ", r_mem)
-print("R^2 HB = ", r2_mem)
+print("R^2 NW memory = ", r_mem)
+print("R^2 HB memory = ", r2_mem)
