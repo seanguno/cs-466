@@ -21,3 +21,6 @@ $ python main.py
 
 # Usage Instructions
 Sequences to align should be formatted as FASTA files and named using integers. For example, 1.fasta and 2.fasta. In main.py, the `num_seqs` variable should be set to the number of sequences (number of FASTA files) that will be analyzed. `alignment_keys` should be filled in with the alingments to compute, for example, `alignment_keys = [(1, 2)]` indicates 1.fasta and 2.fasta will be aligned. Note that the code will take a very long time to run if long sequences are aligned, expecially if `@profile` is not commented out beacuse memory_profiler increases the overall runtime.
+
+
+To plot time and memory analysis results, run `plot.py` after filling in `nw_time` and `hb_time` for Needleman-Wunsch and Hirschberg runtimes, respectively. The same should be done for `nw_mem` and `hb_mem` to plot memory useage.
